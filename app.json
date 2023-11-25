@@ -14,20 +14,25 @@
     },
     "androidStatusBar": {
       "barStyle": "light-content",
-      "translucent": true,
-      "backgroundColor": "#9055EB"           
+     // "translucent": true,
+      "backgroundColor": "#9155EB00"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#9055EB"
+      },
+      "package": "com.glaulher.gocamp",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "bundler": "metro",
@@ -35,10 +40,27 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-updates",
+        {
+          "username": "glaulher"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "48a682f9-ca30-416d-9a81-d59b0cce6baf"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/48a682f9-ca30-416d-9a81-d59b0cce6baf"
     }
   }
 }

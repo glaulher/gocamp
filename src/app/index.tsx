@@ -1,29 +1,13 @@
-
 import { useState } from 'react';
-import Splash from './Splash';
+import SplashScreen from '../screen/SplashScreen';
 import { Redirect } from 'expo-router';
-import { Platform, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 
+export default function App() {
+  const [splashComplete, setSplashComplete] = useState(false);
 
-export default function modal() {
-  
-  const [splashComplete, setSplashComplete] = useState(false)
- 
   if (splashComplete) {
-    return <Redirect href="/(tabs)" />;
+    return <Redirect href="/dashBoard/" />;
   }
-  
-  return (  
-    <View style={{flex:1, backgroundColor:"#9055EB"}} >
-    <StatusBar  style="light"
-              translucent
-              backgroundColor="transparent" 
-             
-              />
-    <Splash onComplete={setSplashComplete } />
-    </View>
-  );
+
+  return <SplashScreen onComplete={setSplashComplete} />;
 }
-
-
