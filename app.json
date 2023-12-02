@@ -8,15 +8,12 @@
     "scheme": "gocamp",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#9055EB"
+      "backgroundColor": "#fff",
+      "image": "assets/splash.png"
     },
     "androidStatusBar": {
-      "barStyle": "light-content",
-     // "translucent": true,
-      "backgroundColor": "#9055EB"
-     // "hidden": true
+      "barStyle": "dark-content",
+      "backgroundColor": "#00000000"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -40,7 +37,7 @@
       "output": "static",
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [     
+    "plugins": [
       [
         "expo-updates",
         {
@@ -48,13 +45,7 @@
         }
       ]
     ],
-    // "experiments": {
-    //   "typedRoutes": true
-    // },
-     "extra": {
-    //   "router": {
-    //     "origin": false
-    //   },
+    "extra": {
       "eas": {
         "projectId": "48a682f9-ca30-416d-9a81-d59b0cce6baf"
       }

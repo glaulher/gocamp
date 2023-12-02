@@ -2,15 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 
 import { ResizeMode, Video, AVPlaybackStatus } from 'expo-av';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { hideAsync } from 'expo-splash-screen';
-import Splash from '../../../assets/splash.mp4';
+import SplashScreen from '../../../assets/splash.mp4';
+import { useSplash } from '../../hook/useSplash';
+import { useNavigation } from '@react-navigation/native';
 
-type Props = {
-  onComplete: (status: boolean) => void;
-};
+export default function Splash() {
+  const { splashFinished, setSplashFinished } = useSplash();
+  const navigation = useNavigation();
 
-export default function SplashScreen({ onComplete }: Props) {
   const [lastStatus, setLastStatus] = useState<AVPlaybackStatus>(
     {} as AVPlaybackStatus,
   );
@@ -23,21 +24,23 @@ export default function SplashScreen({ onComplete }: Props) {
         hideAsync();
       }
       if (status.didJustFinish) {
-        onComplete(true);
+        setSplashFinished(true);
       }
     }
   };
+  useEffect(() => {
+    if (splashFinished) {
+      navigation.navigate('AppRoutes');
+    }
+  }, [navigation, splashFinished]);
+
   return (
-
-
     <>
-     
       <StatusBar style="light" translucent backgroundColor="transparent" />
       <Video
         style={StyleSheet.absoluteFill}
         resizeMode={ResizeMode.COVER}
-        source={Splash}
-     
+        source={SplashScreen}
         isLooping={false}
         onPlaybackStatusUpdate={onPlaybackStatusUpdate}
         shouldPlay
@@ -45,4 +48,3 @@ export default function SplashScreen({ onComplete }: Props) {
     </>
   );
 }
-
