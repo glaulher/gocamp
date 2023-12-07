@@ -1,10 +1,26 @@
 import React, { useEffect } from 'react';
-import { View, Text, Platform } from 'react-native';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Text,
+  View,
+  TextInput,
+} from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 
+import Header from '../../components/Header';
+import useDashBoardStyles from './styles';
+
+import { HighlightCard } from '../../components/HighlightCard';
+import { Button } from '../../components/Button';
+
 export const Dashboard = () => {
+  const styles = useDashBoardStyles();
+
   const { setOptions, addListener } = useNavigation();
 
   useEffect(() => {
@@ -22,10 +38,29 @@ export const Dashboard = () => {
   }, [addListener, setOptions]);
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <StatusBar style="dark" translucent backgroundColor="transparent" />
-      <Text>SplashScreen Demo! 👋</Text>
-      <Entypo name="rocket" size={30} />
-    </View>
+    <>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <View style={styles.container}>
+          <Header />
+
+          <View style={styles.HighlightCards}>
+            <HighlightCard
+              local="Pousada Agua Cristalina"
+              address="Av. Castelo Branco, 5200,"
+              cep="CEP 28680-000"
+              city="Cachoeiras de Macacu"
+              region="Rio de Janeiro - Brasil"
+              latitude="-22.419026,"
+              longitude=" -42.626327"
+            >
+              <Button title="Ir para o retiro" />
+            </HighlightCard>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
+    </>
   );
 };
