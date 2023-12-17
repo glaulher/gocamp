@@ -63,6 +63,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  loading: {
+    height: 80,
+    width: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export const iconMap = theme.COLORS.attention;

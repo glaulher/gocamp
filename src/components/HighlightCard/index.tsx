@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
-import { View, Text } from 'react-native';
-import Map from '../../assets/map.svg';
+import { View, Text, Image } from 'react-native';
+
+import Map from '../../assets/map.png';
 
 import Icon from 'react-native-vector-icons/Feather';
 import { iconMap, styles } from './styles';
-// import { RectButton } from 'react-native-gesture-handler';
 
 interface Props {
   children: ReactNode;
@@ -41,7 +41,8 @@ export function HighlightCard({
             </View>
           </View>
         </View>
-        <Map width={80} height={80} />
+
+        <Image source={Map} alt="Map" />
       </View>
       <View style={styles.footer}>
         <View style={styles.coordinates}>
