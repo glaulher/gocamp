@@ -1,11 +1,12 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ViewStyle } from 'react-native';
+import { ViewStyle, TextStyle } from 'react-native';
 import theme from '../../theme';
 
 interface Styles {
   container: ViewStyle;
-
-  HighlightCards: ViewStyle;
+  highlightCards: ViewStyle;
+  transactions: ViewStyle;
+  title: TextStyle;
 }
 
 export default function useDashBoardStyles(): Styles {
@@ -18,7 +19,7 @@ export default function useDashBoardStyles(): Styles {
       backgroundColor: theme.COLORS.background,
     },
 
-    HighlightCards: {
+    highlightCards: {
       width: '100%',
 
       position: 'absolute',
@@ -26,6 +27,20 @@ export default function useDashBoardStyles(): Styles {
 
       alignItems: 'center',
       paddingHorizontal: 24,
+    },
+
+    transactions: {
+      flex: 1,
+      paddingVertical: 0,
+      paddingHorizontal: 24,
+
+      marginTop: 124,
+    },
+
+    title: {
+      fontSize: 18,
+      fontFamily: theme.FONTS.regular,
+      marginBottom: 16,
     },
   };
 
